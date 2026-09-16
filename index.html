@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohini Deshpande — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #101b2d;
+    --paper: #ffffff;
+    --paper-alt: #eef0f4;
+    --accent: #7a2e3a;
+    --accent-soft: #a85566;
+    --muted: #52606d;
+    --border: #dde1e6;
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #ecebe6;
+      --paper: #11151c;
+      --paper-alt: #1a1f29;
+      --accent: #d99aa8;
+      --accent-soft: #b97786;
+      --muted: #9aa5b1;
+      --border: #2a3040;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { color: var(--accent-soft); }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 1.75rem 6rem;
+  }
+
+  .top-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.25rem 1.75rem 0;
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border-radius: 3px;
+    padding: 0.45rem 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid var(--border);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+  }
+  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: #ffffff; }
+
+  .btn-secondary {
+    background: none;
+    color: var(--muted);
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  header.hero {
+    margin-bottom: 3rem;
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.3rem;
+    line-height: 1.05;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin: 0 0 1.1rem;
+    max-width: 46ch;
+  }
+
+  .contact-row {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .contact-row span, .contact-row a {
+    display: inline-block;
+    margin-right: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .contact-row a { color: var(--muted); }
+  .contact-row a:hover { color: var(--accent); }
+
+  section {
+    margin-bottom: 2.8rem;
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--accent);
+    margin: 0 0 1.1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about p {
+    max-width: 62ch;
+    color: var(--ink);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem 2rem;
+  }
+  @media (max-width: 560px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  .skill-group h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.82rem;
+    margin: 0 0 0.35rem;
+    color: var(--ink);
+  }
+  .skill-group p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+
+  .entry {
+    margin-bottom: 1.7rem;
+  }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.3rem;
+  }
+
+  .entry-title {
+    font-weight: 600;
+    font-size: 1.02rem;
+  }
+  .entry-org {
+    color: var(--muted);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .entry-date {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .entry ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .entry li {
+    margin-bottom: 0.35rem;
+    color: var(--ink);
+  }
+  .entry li::marker { color: var(--accent-soft); }
+
+  .project-link {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+
+  .edu-block, .cert-block {
+    margin-bottom: 1.1rem;
+  }
+  .edu-block:last-child { margin-bottom: 0; }
+  .edu-title { font-weight: 600; }
+  .edu-meta { color: var(--muted); font-size: 0.92rem; }
+  .edu-course { font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
+
+  .cert-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .cert-list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert-list li:last-child { border-bottom: none; }
+
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.75rem 3rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  @media print {
+    .top-actions { display: none; }
+    body { font-size: 10px; line-height: 1.4; }
+    .sheet { padding: 0.15in 0.4in; max-width: 100%; }
+    header.hero { margin-bottom: 0.8rem; }
+    .name { font-size: 1.75rem; margin-bottom: 0.1rem; }
+    .tagline { font-size: 0.82rem; margin-bottom: 0.5rem; }
+    section { break-inside: avoid; margin-bottom: 0.45rem; }
+    h2.section-title { font-size: 0.95rem; margin-bottom: 0.35rem; padding-bottom: 0.15rem; }
+    .about p { font-size: 0.82rem; }
+    .skills-grid { gap: 0.3rem 1.4rem; }
+    .skill-group h3 { font-size: 0.7rem; margin-bottom: 0.1rem; }
+    .skill-group p { font-size: 0.76rem; }
+    .entry { break-inside: avoid; margin-bottom: 0.35rem; }
+    .entry-title { font-size: 0.85rem; }
+    .entry-date { font-size: 0.66rem; }
+    .entry ul { margin-top: 0.1rem; }
+    .entry li { font-size: 0.8rem; margin-bottom: 0.08rem; }
+    .edu-block, .cert-block { margin-bottom: 0.3rem; }
+    .edu-title { font-size: 0.82rem; }
+    .edu-meta, .edu-course { font-size: 0.73rem; }
+    .cert-list { font-size: 0.76rem; }
+    .certifications { break-inside: auto; }
+    .cert-list li { padding: 0.14rem 0; break-inside: avoid; }
+    footer { display: none; }
+    a { color: var(--ink); text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="top-actions">
+    <a class="btn btn-primary" href="mohini-deshpande-cv.pdf" download>Download CV</a>
+    <button class="btn btn-secondary" onclick="window.print()">Print</button>
+  </div>
+
+  <div class="sheet">
+
+    <header class="hero">
+      <h1 class="name">Mohini Deshpande</h1>
+      <p class="tagline">AI Engineer building agentic systems, RAG pipelines, and production ML — from architecture through daily use.</p>
+      <div class="contact-row">
+        <span>London, UK</span>
+        <span>+44 (0)7776 979 342</span>
+        <a href="mailto:mohinideshpande003@gmail.com">mohinideshpande003@gmail.com</a>
+        <a href="#">LinkedIn</a>
+        <a href="https://github.com/MohiniDeshpande">GitHub</a>
+      </div>
+    </header>
+
+    <section class="about">
+      <h2 class="section-title">About</h2>
+      <p>AI and Software Engineer specialising in applied GenAI and agentic AI systems, with production experience across backend engineering, LLM integration, and NLP. I build Python services, agentic workflows, and retrieval-augmented generation systems end to end, from requirements gathering through daily production use. My background spans model evaluation and fine-tuning, cloud deployment, and automation tooling, with a track record of full ownership on solo and freelance engagements.</p>
+    </section>
+
+    <section class="skills">
+      <h2 class="section-title">Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Languages &amp; Frontend</h3>
+          <p>Python, JavaScript/TypeScript, SQL, MySQL, React, HTML, CSS</p>
+        </div>
+        <div class="skill-group">
+          <h3>Backend &amp; Data</h3>
+          <p>FastAPI, Node.js, REST APIs, PostgreSQL, Redis, Celery, MongoDB, vector databases, Qdrant, pgvector</p>
+        </div>
+        <div class="skill-group">
+          <h3>AI, LLM &amp; Agentic Systems</h3>
+          <p>Google ADK, Gemini API, Llama API, LangChain, Hugging Face, Model Context Protocol, retrieval-augmented generation, prompt engineering, multi-agent orchestration</p>
+        </div>
+        <div class="skill-group">
+          <h3>Machine Learning &amp; NLP</h3>
+          <p>PyTorch, TensorFlow, neural networks, Transformer architecture, fine-tuning, BERT, FinBERT, tokenization, Named Entity Recognition</p>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud, DevOps &amp; Tools</h3>
+          <p>AWS, GCP, Azure ML, Docker, Kubernetes, CI/CD, GitHub Actions, Git, Claude Code, GitHub Copilot</p>
+        </div>
+        <div class="skill-group">
+          <h3>Automation &amp; Data</h3>
+          <p>n8n, Make, Zapier, UiPath, Microsoft Copilot, Excel data cleaning and reconciliation</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div><span class="entry-title">Contract Software Engineer</span> <span class="entry-org">— Ekblink</span></div>
+          <div class="entry-date">Jul 2026 – Present</div>
+        </div>
+        <ul>
+          <li>Building backend infrastructure using Python, FastAPI, Redis, and PostgreSQL for a production AI content-moderation pipeline, with logging and monitoring for observability.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div><span class="entry-title">Contract Software Engineer</span> <span class="entry-org">— Independent Client, India</span></div>
+          <div class="entry-date">Dec 2024 – Mar 2025</div>
+        </div>
+        <ul>
+          <li>Took full ownership as sole engineer of a Python and Gemini API agent that processes unstructured inbound client emails, auto-drafting responses to roughly 65–70% of the 45–50 weekly inquiries and routing edge cases to a human.</li>
+          <li>Introduced pytest and DeepEval tests to validate model output against expected schemas; the agent has run in daily production use since I built and shipped it.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div><span class="entry-title">AI Trainer</span> <span class="entry-org">— Outlier, Remote</span></div>
+          <div class="entry-date">Oct 2024 – Jul 2025</div>
+        </div>
+        <ul>
+          <li>Designed evaluation frameworks to assess and reduce bias across 150+ AI model responses, lifting output credibility by 20%, and translated findings into clear recommendations for technical and non-technical stakeholders.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div><span class="entry-title">Machine Learning Intern</span> <span class="entry-org">— SmartKnower, India</span></div>
+          <div class="entry-date">Apr – May 2021</div>
+        </div>
+        <ul>
+          <li>Built Python ETL pipelines and CNN/LSTM neural network models, lifting data quality by 25% and improving business metric projections by 12%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div><span class="entry-title">FinBERT &amp; LSTM Market Intelligence</span> <span class="entry-org">— NLP sentiment &amp; forecasting pipeline</span></div>
+        </div>
+        <ul>
+          <li>Built an end-to-end NLP pipeline fine-tuning a pretrained FinBERT transformer model for sentiment classification on financial news, reaching 88% accuracy, then feeding those signals into an LSTM/MLP forecasting stage at 75% precision.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div><span class="entry-title">FixIt AI</span> <span class="entry-org">— Autonomous agentic assistant</span></div>
+          <span class="project-link"><a href="https://github.com/MohiniDeshpande/ai-handyman-backend">github.com/MohiniDeshpande/ai-handyman-backend</a></span>
+        </div>
+        <ul>
+          <li>Architected an agentic assistant in Python using Google's Agent Development Kit and a FastAPI backend, combining LLM prompting and function/tool calling with a RAG pipeline over Qdrant and pgvector for grounded, context-aware responses.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div><span class="entry-title">PokéMarket</span> <span class="entry-org">— AI market intelligence platform</span></div>
+          <span class="project-link"><a href="https://github.com/MohiniDeshpande/pokemarket-ai">github.com/MohiniDeshpande/pokemarket-ai</a></span>
+        </div>
+        <ul>
+          <li>Built a React frontend for a full-stack agentic chatbot, integrating MongoDB MCP and the Gemini API to deliver real-time profit tracking and financial metrics, containerised with Docker and deployed via CI/CD.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="education">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-block">
+        <div class="edu-title">MSc Advanced Computer Science: AI</div>
+        <div class="edu-meta">University of Manchester, UK — 2023–2024</div>
+        <div class="edu-course">Coursework: Reinforcement Learning, Deep Learning, NLP, Computer Vision, Data Engineering</div>
+      </div>
+      <div class="edu-block">
+        <div class="edu-title">BSc Computer Science</div>
+        <div class="edu-meta">University of Mumbai, India — 2019–2022</div>
+      </div>
+    </section>
+
+    <section class="certifications">
+      <h2 class="section-title">Certifications</h2>
+      <ul class="cert-list">
+        <li>Google Cloud Platform Fundamentals — Coursera</li>
+        <li>ML Pipelines with Azure ML Studio — Coursera</li>
+        <li>UiPath Workflow Automation Certification</li>
+        <li>Ethics of AI — University of Helsinki, in progress</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer>
+    Last updated September 2026
+  </footer>
+
+</body>
+</html>
